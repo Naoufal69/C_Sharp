@@ -14,3 +14,6 @@ Une fois compilé l'app se résume à un fichier exe au sein de l'env cible
 
 les mots réservé ne peuvent pas être choisit pour les nom de variables.
     Sauf si on utilise "@"
+
+x is int => Vérifie le type de la variable
+o is Datetime d => o est caster en Datetime et placé dans d
