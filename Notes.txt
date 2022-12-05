@@ -1,0 +1,12 @@
+Le framework .NET est l'élément central des applications
+
+Il est constitué de deux éléments :
+	-Le CLR
+	-Des bibliothèques de classes
+Le CLR gère l'env d'exe des appli. Il permet de combiner des assemblages de codes, quel que soit le langage
+dans lequel ils ont été écrits. Une application en C# pourra utiliser une lib en en VB (visual basic)
+
+Le compilateur est capable de convertir du code de diff langages en lagage intermédiraire (IL)
+
+Chque tpe de langages utilisé pour le framework .NET a son equivalent en lagage intermédiraire
+Une fois compilé l'app se résume à un fichier exe au sein de l'env cible
