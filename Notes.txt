@@ -17,3 +17,8 @@ les mots réservé ne peuvent pas être choisit pour les nom de variables.
 
 x is int => Vérifie le type de la variable
 o is Datetime d => o est caster en Datetime et placé dans d
+
+En C# on distingue les "value type"(VT) et les "reference type"(RT)
+
+Une valeur VT est la véritable valeur. 
+Une valeur RT est une référence vers une autre valeur.
