@@ -72,7 +72,6 @@ namespace MySpacePendu
                 this.game = false;
                 Console.WriteLine("Vous avez gagné !! Bravo !! ");
             }
-            PrintWordToGuess();
         }
     }
 }

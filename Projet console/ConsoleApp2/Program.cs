@@ -10,6 +10,7 @@ utility.StartOfTheGame();
 while (pendu.game == true)
 {
     utility.Ask();
+    pendu.PrintWordToGuess();
     try
     {
         guess = Console.ReadLine();
