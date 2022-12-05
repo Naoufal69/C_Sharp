@@ -21,10 +21,9 @@ namespace MySpacePendu
                 this.check[j] = 0;
             }
             this.errorNumber = 0;
-            printWordToGuess();
         }
 
-        public void printWordToGuess()
+        public void PrintWordToGuess()
         {
             for (int j = 0; j < this.check.Length; j++)
             {
@@ -36,7 +35,7 @@ namespace MySpacePendu
             Console.WriteLine();
         }
 
-        public int checkIfWinOrLoose()
+        public int CheckIfWinOrLoose()
         {
             if (this.errorNumber >= 10)
             {
@@ -50,7 +49,7 @@ namespace MySpacePendu
             return sum;
         }
 
-        public void checkChar(char ch)
+        public void CheckChar(char ch)
         {
             int i = 0;
             bool isIn = false;
@@ -67,10 +66,13 @@ namespace MySpacePendu
                 Console.WriteLine($"La lettre {ch} est présent dans le mot");
             else
                 this.errorNumber++;
-            int numberToCheck = checkIfWinOrLoose();
+            int numberToCheck = CheckIfWinOrLoose();
             if (numberToCheck == this.check.Length && numberToCheck > 0)
+            {
                 this.game = false;
-            printWordToGuess();
+                Console.WriteLine("Vous avez gagné !! Bravo !! ");
+            }
+            PrintWordToGuess();
         }
     }
 }

@@ -1,20 +1,23 @@
 ﻿using MySpacePendu;
+using MyUtility;
 
 Pendu pendu = new Pendu();
+Utility utility = new Utility();
 string guess;
 char ch;
-Console.WriteLine(pendu.word);
+
+utility.StartOfTheGame();
 while (pendu.game == true)
 {
-    Console.Write("Donnez une lettre : ");
+    utility.Ask();
     try
     {
         guess = Console.ReadLine();
         ch = guess[0];
-        pendu.checkChar(ch);
+        pendu.CheckChar(ch);
     }
     catch (IndexOutOfRangeException)
     {
-        Console.WriteLine("Mauvais input !! recommencez ! ");
+        utility.WrongInput();
     }
 }

@@ -22,3 +22,9 @@ En C# on distingue les "value type"(VT) et les "reference type"(RT)
 
 Une valeur VT est la véritable valeur. 
 Une valeur RT est une référence vers une autre valeur.
+
+Membres => méthodes, propriétés sont placés entre le accolades
+
+Public => Autorise l'arret a tous les types "assembly"
+
+Private => Autorise l'acces uniquement pour les autres membres du type
