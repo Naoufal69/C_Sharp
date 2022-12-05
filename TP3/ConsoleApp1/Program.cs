@@ -1,6 +1,6 @@
 ﻿namespace MySpaceOne
 {
-    class Test
+    public class Test
     {
 
     }
@@ -8,7 +8,7 @@
 
 namespace MySpaceTwo
 {
-    class Test
+    static class Test
     {
 
     }
