@@ -1,15 +1,6 @@
-﻿class Student
-{
-    string name { get; set; }
-}
-static void ChangeValue(Student student)
-{
-    student.name = 'Nicolas';
-}
+﻿string name = "Naoufal";
 
-Student Kevin = new Student();
-Kevin.name = "Kévin";
+int nmbrCara = name.Length;
 
-ChangeValue(Kevin);
-
-Console.WriteLine(Kevin.name);
+Console.WriteLine(nmbrCara);
+Console.WriteLine(name.ToUpper());
