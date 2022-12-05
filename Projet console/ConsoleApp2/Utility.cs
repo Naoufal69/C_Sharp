@@ -1,16 +1,21 @@
 namespace MyUtility
 {
+    //Peut être pas pertinent, mais, c'était pour avoir une classe sans constructeur
     class Utility
     {
-        public Utility()
-        {
-
-        }
-
+        /// <summary>
+        /// This function is called at the beginning of the game
+        /// </summary>
         public void StartOfTheGame() { Console.WriteLine("Debut du jeux !!"); }
 
+        /// <summary>
+        /// It asks the user to enter a letter
+        /// </summary>
         public void Ask() { Console.Write("Donnez une lettre : "); }
 
+        /// <summary>
+        /// This function is used to display a message to the user when he enters a wrong input
+        /// </summary>
         public void WrongInput() { Console.WriteLine("Mauvais input !! recommencez ! "); }
     }
 }

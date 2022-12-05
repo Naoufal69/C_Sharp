@@ -4,10 +4,13 @@ namespace MySpacePendu
 {
     class Pendu
     {
+        /* Some properties. */
         public string word { get; set; }
         public int[] check { get; set; }
         public bool game { get; set; }
         public int errorNumber { get; set; }
+
+        /* The constructor of the class. It is called when you create a new instance of the class. */
         public Pendu()
         {
             string[] dico = { "Bonjour","Nicolas","Test","Feu","Meilleur","Constitution"};
@@ -23,6 +26,10 @@ namespace MySpacePendu
             this.errorNumber = 0;
         }
 
+        /// <summary>
+        /// This function prints the word to guess, replacing letters that have not been guessed with
+        /// underscores
+        /// </summary>
         public void PrintWordToGuess()
         {
             for (int j = 0; j < this.check.Length; j++)
@@ -35,6 +42,12 @@ namespace MySpacePendu
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// This function checks if the player has won or lost the game
+        /// </summary>
+        /// <returns>
+        /// The sum of the check array.
+        /// </returns>
         public int CheckIfWinOrLoose()
         {
             if (this.errorNumber >= 10)
@@ -49,6 +62,10 @@ namespace MySpacePendu
             return sum;
         }
 
+        /// <summary>
+        /// This function checks if the character entered by the user is in the word to guess
+        /// </summary>
+        /// <param name="ch">the character that the user entered</param>
         public void CheckChar(char ch)
         {
             int i = 0;
@@ -63,14 +80,14 @@ namespace MySpacePendu
             }
 
             if (isIn)
-                Console.WriteLine($"La lettre {ch} est présent dans le mot");
+                Console.WriteLine($"La lettre {ch} est prï¿½sent dans le mot");
             else
                 this.errorNumber++;
             int numberToCheck = CheckIfWinOrLoose();
             if (numberToCheck == this.check.Length && numberToCheck > 0)
             {
                 this.game = false;
-                Console.WriteLine("Vous avez gagné !! Bravo !! ");
+                Console.WriteLine("Vous avez gagnï¿½ !! Bravo !! ");
             }
         }
     }
