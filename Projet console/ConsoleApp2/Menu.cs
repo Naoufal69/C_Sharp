@@ -23,7 +23,7 @@ namespace MainMenu{
             }
             passed = false;
 
-            while (this.answers != "O" && this.answers != "N"){
+            while (this.answers.ToUpper() != "O" && this.answers.ToUpper() != "N"){
                 while (passed == false)
                 {
                     try
@@ -38,7 +38,7 @@ namespace MainMenu{
                 }
                 passed = false;
             }
-            if (this.answers == "O"){
+            if (this.answers.ToUpper() == "O"){
                 this.isInProgress = true;
                 this.StartOfTheGame();
             }
@@ -72,7 +72,7 @@ namespace MainMenu{
                 }
             }
             passed = false;
-            while (this.answers != "O" && this.answers != "N")
+            while (this.answers.ToUpper() != "O" && this.answers.ToUpper() != "N")
             {
                 while (passed == false)
                 {
@@ -89,7 +89,7 @@ namespace MainMenu{
                 passed = false;
             }
 
-            if (this.answers == "O")
+            if (this.answers.ToUpper() == "O")
             {
                 return true;
             }
