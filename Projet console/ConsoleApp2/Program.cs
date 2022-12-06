@@ -1,9 +1,8 @@
 ﻿using MySpacePendu;
-using MyUtility;
 using MainMenu;
 
 Pendu pendu = new Pendu();
-MainMenu menu = new MainMenu();
+Menu menu = new Menu();
 string guess;
 char ch;
 
@@ -22,5 +21,10 @@ while (menu.isInProgress){
         {
             menu.WrongInput();
         }
+    }
+    pendu.game = menu.RestartTheGame();
+    if (pendu.game == true)
+    {
+        pendu.RegenrateTheGame();
     }
 }

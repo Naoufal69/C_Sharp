@@ -6,21 +6,21 @@ namespace MyUtility
         /// <summary>
         /// This function is called at the beginning of the game
         /// </summary>
-        protected void StartOfTheGame() { Console.WriteLine("Debut du jeux !!"); }
+        public void StartOfTheGame() { Console.WriteLine("Debut du jeux !!"); }
 
         /// <summary>
         /// It asks the user to enter a letter
         /// </summary>
-        protected void Ask() { Console.Write("Donnez une lettre : "); }
-
+        public void Ask() { Console.Write("Donnez une lettre : "); }
+        
         /// <summary>
         /// This function is used to display a message to the user when he enters a wrong input
         /// </summary>
-        protected void WrongInput() { Console.WriteLine("Mauvais input !! recommencez ! "); }
+        public void WrongInput() { Console.WriteLine("Mauvais input !! recommencez ! ");}
 
         /// <summary>
         /// When the game is over, display a message to the user.
         /// </summary>
-        protected void EndOfTheGame() { Console.WriteLine("Fin du jeux !!"); }
+        public void EndOfTheGame() { Console.WriteLine("Fin du jeux !!"); }
     }
 }

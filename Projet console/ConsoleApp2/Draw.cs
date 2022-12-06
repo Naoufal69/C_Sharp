@@ -130,6 +130,8 @@ namespace Drawing
                     Console.WriteLine();
                     Console.WriteLine("Vous êtes pendu !!");
                     break;
+                default:
+                    break;
             }
         }
     }

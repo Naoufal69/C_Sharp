@@ -1,8 +1,9 @@
+using Drawing;
 using System.Runtime.CompilerServices;
 
 namespace MySpacePendu
 {
-    class Pendu
+    class Pendu: Draw
     {
         /* Some properties. */
         public string word { get; set; }
@@ -50,7 +51,8 @@ namespace MySpacePendu
         /// </returns>
         public int CheckIfWinOrLoose()
         {
-            if (this.errorNumber >= 10)
+            DrawTheHangMan(this.errorNumber);
+            if (this.errorNumber >= 9)
             {
                 this.game = false;
                 Console.WriteLine("Vous avez perdu !");
@@ -72,23 +74,42 @@ namespace MySpacePendu
             bool isIn = false;
             for (int j = 0; j < this.word.Length; j++)
             {
-                if (ch == this.word[j])
+                if (ch == this.word[j] && this.check[j]==0)
                 {
                     this.check[j]++;
+                    isIn = true;
+                }
+                else if (ch == this.word[j] && this.check[j] != 0)
+                {
                     isIn = true;
                 }
             }
 
             if (isIn)
-                Console.WriteLine($"La lettre {ch} est pr�sent dans le mot");
+                Console.WriteLine($"La lettre {ch} est présent dans le mot");
             else
                 this.errorNumber++;
             int numberToCheck = CheckIfWinOrLoose();
             if (numberToCheck == this.check.Length && numberToCheck > 0)
             {
                 this.game = false;
-                Console.WriteLine("Vous avez gagn� !! Bravo !! ");
+                Console.WriteLine("Vous avez gagné !! Bravo !! ");
             }
+        }
+
+        public void RegenrateTheGame()
+        {
+            string[] dico = { "Bonjour", "Nicolas", "Test", "Feu", "Meilleur", "Constitution" };
+            this.game = true;
+            var rand = new Random();
+            int i = rand.Next(0, dico.Length);
+            this.word = dico[i].ToLower();
+            this.check = new int[this.word.Length];
+            for (int j = 0; j < this.check.Length; j++)
+            {
+                this.check[j] = 0;
+            }
+            this.errorNumber = 0;
         }
     }
 }
