@@ -6,7 +6,7 @@ namespace MyUtility
         /// <summary>
         /// This function is called at the beginning of the game
         /// </summary>
-        public void StartOfTheGame() { Console.WriteLine("Debut du jeux !!"); }
+        protected void StartOfTheGame() { Console.WriteLine("Debut du jeux !!"); }
 
         /// <summary>
         /// It asks the user to enter a letter

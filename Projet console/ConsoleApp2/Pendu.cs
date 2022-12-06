@@ -97,12 +97,20 @@ namespace MySpacePendu
             }
         }
 
+        /// <summary>
+        /// It generates a new word to guess and resets the error number
+        /// </summary>
         public void RegenrateTheGame()
         {
+            Console.Clear();
             string[] dico = { "Bonjour", "Nicolas", "Test", "Feu", "Meilleur", "Constitution" };
             this.game = true;
             var rand = new Random();
             int i = rand.Next(0, dico.Length);
+            while (this.word == dico[i].ToLower())
+            {
+                i = rand.Next(0, dico.Length);
+            }
             this.word = dico[i].ToLower();
             this.check = new int[this.word.Length];
             for (int j = 0; j < this.check.Length; j++)

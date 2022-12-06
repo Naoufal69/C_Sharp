@@ -2,7 +2,7 @@ using MyUtility;
 
 namespace MainMenu{
     class Menu: Utility{
-        public string awnsers;
+        public string answers;
 
         public bool isInProgress {get; set;}
 
@@ -13,77 +13,83 @@ namespace MainMenu{
             {
                 try
                 {
-                    this.awnsers = Console.ReadLine();
+                    this.answers = Console.ReadLine();
                     passed = true;
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    WrongInput();
+                    this.WrongInput();
                 }
             }
             passed = false;
 
-            while (this.awnsers != "O" && this.awnsers != "N"){
-                Console.WriteLine("LA");
+            while (this.answers != "O" && this.answers != "N"){
                 while (passed == false)
                 {
                     try
                     {
-                        this.awnsers = Console.ReadLine();
+                        this.answers = Console.ReadLine();
                         passed = true;
                     }
                     catch (IndexOutOfRangeException)
                     {
-                        WrongInput();
+                        this.WrongInput();
                     }
                 }
                 passed = false;
             }
-            if (this.awnsers == "O"){
+            if (this.answers == "O"){
                 this.isInProgress = true;
-                StartOfTheGame();
+                this.StartOfTheGame();
             }
             else{
                 this.isInProgress = false;
-                EndOfTheGame();
+                this.EndOfTheGame();
             }
         }
 
+        /// <summary>
+        /// It asks the user if he wants to restart the game, if he answers "O" (for "Oui" in french) it
+        /// returns true, if he answers "N" (for "Non" in french) it returns false.
+        /// </summary>
+        /// <returns>
+        /// A boolean value.
+        /// </returns>
         public bool RestartTheGame()
         {
             bool passed = false;
-            Console.WriteLine("Voulez vous recommencer ? (O/N)");
+            Console.Write("Voulez vous recommencer ? (O/N) ");
             while (passed == false)
             {
                 try
                 {
-                    this.awnsers = Console.ReadLine();
+                    this.answers = Console.ReadLine();
                     passed = true;
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    WrongInput();
+                    this.WrongInput();
                 }
             }
             passed = false;
-            while (this.awnsers != "O" || this.awnsers != "N")
+            while (this.answers != "O" && this.answers != "N")
             {
                 while (passed == false)
                 {
                     try
                     {
-                        this.awnsers = Console.ReadLine();
+                        this.answers = Console.ReadLine();
                         passed = true;
                     }
                     catch (IndexOutOfRangeException)
                     {
-                        WrongInput();
+                        this.WrongInput();
                     }
                 }
                 passed = false;
             }
 
-            if (this.awnsers == "O")
+            if (this.answers == "O")
             {
                 return true;
             }

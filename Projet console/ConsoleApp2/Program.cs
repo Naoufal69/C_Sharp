@@ -23,6 +23,7 @@ while (menu.isInProgress){
         }
     }
     pendu.game = menu.RestartTheGame();
+    Console.WriteLine(pendu.game);
     if (pendu.game == true)
     {
         pendu.RegenrateTheGame();
