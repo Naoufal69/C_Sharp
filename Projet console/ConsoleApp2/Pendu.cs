@@ -19,7 +19,7 @@ namespace MySpacePendu
             this.game = true;
             var rand = new Random();
             int i = rand.Next(0, dico.Length);
-            this.word = dico[i].ToLower();
+            this.word = dico[i].ToLower().Trim();
             this.check = new int[this.word.Length];
             for (int j = 0; j < this.check.Length; j++)
             {
@@ -34,12 +34,14 @@ namespace MySpacePendu
         /// </summary>
         public void PrintWordToGuess()
         {
-            for (int j = 0; j < this.check.Length; j++)
+            for (int j = 0; j < this.word.Length; j++)
             {
                 if (this.check[j] == 0)
                 {
-                    if (j != this.check.Length)
+                    if (j != this.word.Length)
+                    {
                         Console.Write("_");
+                    }
                 }
                 else
                     Console.Write(this.word[j]);
@@ -107,7 +109,8 @@ namespace MySpacePendu
         public void RegenrateTheGame()
         {
             Console.Clear();
-            string[] dico = { "Bonjour", "Nicolas", "Test", "Feu", "Meilleur", "Constitution" };
+            string text = File.ReadAllText(@"liste_francais.txt");
+            string[] dico = text.Split("\n");
             this.game = true;
             var rand = new Random();
             int i = rand.Next(0, dico.Length);
@@ -115,9 +118,10 @@ namespace MySpacePendu
             {
                 i = rand.Next(0, dico.Length);
             }
-            this.word = dico[i].ToLower();
+            this.word = dico[i].ToLower().Trim();
+            Console.WriteLine(this.word.Length);
             this.check = new int[this.word.Length];
-            for (int j = 0; j < this.check.Length; j++)
+            for (int j = 1; j < this.check.Length; j++)
             {
                 this.check[j] = 0;
             }
