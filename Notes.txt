@@ -35,3 +35,5 @@ Protected => Acces pour les autres membres du type et pour tous les types qui hÃ
     de l'espace de nom (assembly)
 
 Protected internal => 
+
+exemple pertinent d'interface et de classe abstraite
