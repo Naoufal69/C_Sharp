@@ -14,11 +14,14 @@ namespace MainMenu{
                 try
                 {
                     this.answers = Console.ReadLine();
-                    passed = true;
                 }
                 catch (IndexOutOfRangeException)
                 {
                     this.WrongInput();
+                }
+                finally
+                {
+                    passed = true;
                 }
             }
             passed = false;
@@ -28,12 +31,16 @@ namespace MainMenu{
                 {
                     try
                     {
+                        this.WrongInput();
                         this.answers = Console.ReadLine();
-                        passed = true;
                     }
                     catch (IndexOutOfRangeException)
                     {
                         this.WrongInput();
+                    }
+                    finally
+                    {
+                        passed = true;
                     }
                 }
                 passed = false;
@@ -64,11 +71,14 @@ namespace MainMenu{
                 try
                 {
                     this.answers = Console.ReadLine();
-                    passed = true;
                 }
                 catch (IndexOutOfRangeException)
                 {
                     this.WrongInput();
+                }
+                finally
+                {
+                    passed = true;
                 }
             }
             passed = false;
@@ -78,12 +88,16 @@ namespace MainMenu{
                 {
                     try
                     {
+                        this.WrongInput();
                         this.answers = Console.ReadLine();
-                        passed = true;
                     }
                     catch (IndexOutOfRangeException)
                     {
                         this.WrongInput();
+                    }
+                    finally
+                    {
+                        passed = true;
                     }
                 }
                 passed = false;
