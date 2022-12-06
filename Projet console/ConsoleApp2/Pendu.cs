@@ -14,7 +14,8 @@ namespace MySpacePendu
         /* The constructor of the class. It is called when you create a new instance of the class. */
         public Pendu()
         {
-            string[] dico = { "Bonjour","Nicolas","Test","Feu","Meilleur","Constitution"};
+            string text = File.ReadAllText(@"liste_francais.txt");
+            string[] dico = text.Split("\n");
             this.game = true;
             var rand = new Random();
             int i = rand.Next(0, dico.Length);
@@ -36,7 +37,10 @@ namespace MySpacePendu
             for (int j = 0; j < this.check.Length; j++)
             {
                 if (this.check[j] == 0)
-                    Console.Write("_");
+                {
+                    if (j != this.check.Length)
+                        Console.Write("_");
+                }
                 else
                     Console.Write(this.word[j]);
             }
@@ -55,7 +59,7 @@ namespace MySpacePendu
             if (this.errorNumber >= 9)
             {
                 this.game = false;
-                Console.WriteLine("Vous avez perdu !");
+                Console.WriteLine($"Vous avez perdu ! le mot était {this.word}");
                 return -1;
             }  
             int sum = 0;
@@ -93,7 +97,7 @@ namespace MySpacePendu
             if (numberToCheck == this.check.Length && numberToCheck > 0)
             {
                 this.game = false;
-                Console.WriteLine("Vous avez gagné !! Bravo !! ");
+                Console.WriteLine($"Vous avez gagné !! Bravo !! le mot était {this.word}");
             }
         }
 

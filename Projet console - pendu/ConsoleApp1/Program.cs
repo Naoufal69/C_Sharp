@@ -1,6 +1,6 @@
 ﻿/*Zone pour simuler le dessin du pendu*/
 int value = 8;
-switch (value)
+/*switch (value)
 {
     case 1:
         for (int i = 0; i < 5; i++)
@@ -122,4 +122,12 @@ switch (value)
         Console.WriteLine();
         Console.WriteLine("Vous êtes pendu !!");
         break;
+}*/
+
+string text = File.ReadAllText(@"D:\C#\Semaine - ISITECH\Projet console - pendu\ConsoleApp1\liste_francais.txt");
+string[] t = text.Split("\n");
+
+foreach (var sub in t)
+{
+    Console.WriteLine($"Substring: {sub}");
 }
