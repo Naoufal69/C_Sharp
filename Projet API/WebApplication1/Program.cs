@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql("server='127.0.0.1';port=1234;database='api-dotnet';uid='root';pwd=''", new MySqlServerVersion(new Version(10,4,24)), mySqlOptions => mySqlOptions.EnableRetryOnFailure()));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql("server='127.0.0.1';port=3306;Database=api-dotnet;uid='root';pwd=''", new MySqlServerVersion(new Version(10,4,24)), mySqlOptions => mySqlOptions.EnableRetryOnFailure()));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
