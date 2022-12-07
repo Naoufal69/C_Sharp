@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
 
 namespace WebApplication1.Controllers{
     [ApiController]
@@ -46,12 +47,17 @@ namespace WebApplication1.Controllers{
             return Ok(products);
         }
 
-        [HttpPost]
-        public ActionResult<List<Products>> UpdateProducts(string name, double price)
+        [HttpPost("{id:int}")]
+        public ActionResult<List<Products>> UpdateProducts(int id,string name, double price)
         {
-            Products newProducts = new Products { Id = products.Count + 1, Name = name, Price = price };
-            products.Add(newProducts);
-            return Ok(products);
+            if (id < 0 || id > products.Count)
+                return NotFound(products);
+            else
+            {
+                products[id - 1].Name = name;
+                products[id - 1].Price = price;
+                return Ok(products);
+            }
         }
     }
 }
