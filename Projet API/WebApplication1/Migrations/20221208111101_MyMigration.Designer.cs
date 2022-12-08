@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221208094554_MyMigration")]
+    [Migration("20221208111101_MyMigration")]
     partial class MyMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,9 +25,6 @@ namespace WebApplication1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Fk_Id_Seller")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -35,9 +32,12 @@ namespace WebApplication1.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double");
 
+                    b.Property<int>("SellerId_Seller")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("Fk_Id_Seller");
+                    b.HasIndex("SellerId_Seller");
 
                     b.ToTable("products");
                 });
@@ -63,13 +63,13 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Product", b =>
                 {
-                    b.HasOne("WebApplication1.Entities.Seller", "Fk_")
+                    b.HasOne("WebApplication1.Entities.Seller", "Seller")
                         .WithMany("Products")
-                        .HasForeignKey("Fk_Id_Seller")
+                        .HasForeignKey("SellerId_Seller")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Fk_");
+                    b.Navigation("Seller");
                 });
 
             modelBuilder.Entity("WebApplication1.Entities.Seller", b =>

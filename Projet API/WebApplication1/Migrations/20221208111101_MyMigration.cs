@@ -38,14 +38,14 @@ namespace WebApplication1.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Price = table.Column<double>(type: "double", nullable: false),
-                    Fk_Id_Seller = table.Column<int>(type: "int", nullable: false)
+                    SellerId_Seller = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_products_sellers_Fk_Id_Seller",
-                        column: x => x.Fk_Id_Seller,
+                        name: "FK_products_sellers_SellerId_Seller",
+                        column: x => x.SellerId_Seller,
                         principalTable: "sellers",
                         principalColumn: "Id_Seller",
                         onDelete: ReferentialAction.Cascade);
@@ -53,9 +53,9 @@ namespace WebApplication1.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_Fk_Id_Seller",
+                name: "IX_products_SellerId_Seller",
                 table: "products",
-                column: "Fk_Id_Seller");
+                column: "SellerId_Seller");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

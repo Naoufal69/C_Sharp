@@ -11,5 +11,5 @@ public class Product
     [Required]
     public double Price { get; set; }
     [Required]
-    public Seller? Fk_ { get; set;}
+    public Seller? Seller { get; set;}
 }
