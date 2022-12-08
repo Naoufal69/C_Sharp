@@ -46,6 +46,28 @@ namespace WebApplication1.Controllers{
             return tmp_Products;
         }
 
+        [HttpDelete("id")]
+        public async Task<ActionResult<String>> DeleteProduct(int id)
+        {
+            Product product = new Product();
+            if (this._context.products.FindAsync(id) == null)
+            {
+                return NotFound(id);
+            }
+            product = await this._context.products.FindAsync(id);
+            this._context.products.Remove(product);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+            return Ok("Produit supprimé");
+        }
+
+
         [HttpGet("{name}")]
         public async Task<ActionResult<IEnumerable<Product>>> GetByName(string name)
         {
