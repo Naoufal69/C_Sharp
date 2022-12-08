@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Xml.Linq;
+using WebApplication1.Entities;
 
 namespace WebApplication1.Controllers{
     [ApiController]
@@ -63,6 +64,35 @@ namespace WebApplication1.Controllers{
                 i++;
             }
             return tmp_Products;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<String>> AddProduct(int id_Seller,double price,string name)
+        {
+
+            bool found = false;
+            foreach (Seller seller in _context.sellers)
+            {
+                if (seller.Id_Seller == id_Seller)
+                {
+                    Product product = new Product { Fk_ = seller, Price = price, Name = name };
+                    await _context.products.AddAsync(product);
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    }
+                    catch
+                    {
+                        return StatusCode(500);
+                    }
+                    found = true;
+                }
+            }
+
+            if (found)
+                return Ok("Ressource crée");
+            else 
+                return NotFound("Vendeur inconnu");
         }
 
         
