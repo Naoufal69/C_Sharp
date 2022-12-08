@@ -69,7 +69,17 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<ActionResult<String>> AddSeller(string allias, string adress)
         {
-            Seller nSeller = new Seller;
+            Seller nSeller = new Seller { Allias = allias, Adress = adress };
+            await _context.sellers.AddAsync(nSeller);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+            return Ok("Ressource créée");
         }
     }
 }
