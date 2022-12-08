@@ -71,9 +71,12 @@ namespace WebApplication1.Controllers
             return Ok($"Le produit {sellers.Allias} a été mis à jours");
         }
 
-        [HttpDelete("id:int")]
+        [HttpDelete("id")]
         public async Task<ActionResult<String>> DeleteSeller(int id)
         {
+            if (id < 0) {
+                return NotFound("Ressource non trouvé");
+            }
             Seller seller = new Seller();
             foreach(Seller? tmp_seller in _context.sellers)
             {
