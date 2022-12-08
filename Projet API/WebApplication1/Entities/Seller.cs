@@ -10,5 +10,6 @@ namespace WebApplication1.Entities
         public string Allias { get; set; }
         [Required]
         public string Adress { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }
