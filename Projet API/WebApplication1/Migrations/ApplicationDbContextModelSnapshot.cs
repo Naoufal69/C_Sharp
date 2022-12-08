@@ -23,7 +23,7 @@ namespace WebApplication1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Fk_Seller")
+                    b.Property<int>("Fk_Id_Seller")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -34,6 +34,8 @@ namespace WebApplication1.Migrations
                         .HasColumnType("double");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Fk_Id_Seller");
 
                     b.ToTable("products");
                 });
@@ -55,6 +57,22 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id_Seller");
 
                     b.ToTable("sellers");
+                });
+
+            modelBuilder.Entity("Product", b =>
+                {
+                    b.HasOne("WebApplication1.Entities.Seller", "Fk_")
+                        .WithMany("Products")
+                        .HasForeignKey("Fk_Id_Seller")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Fk_");
+                });
+
+            modelBuilder.Entity("WebApplication1.Entities.Seller", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
