@@ -34,6 +34,8 @@ Internal => Uniquement au sein de l'espace de nom du type
 Protected => Acces pour les autres membres du type et pour tous les types qui hérite de celui-ci même en dehors
     de l'espace de nom (assembly)
 
-Protected internal => 
+Protected internal => le type ou le membre est accessible par n’importe quel code de l’assembly dans lequel il est déclaré, ou à partir d’un élément dérivé class d’un autre assembly.
+
+Protected private => le type ou le membre est accessible par des types dérivés de celui class qui sont déclarés dans son assembly contenant.
 
 exemple pertinent d'interface et de classe abstraite
