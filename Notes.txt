@@ -39,3 +39,23 @@ Protected internal => le type ou le membre est accessible par n’importe quel c
 Protected private => le type ou le membre est accessible par des types dérivés de celui class qui sont déclarés dans son assembly contenant.
 
 exemple pertinent d'interface et de classe abstraite
+
+/* Exemple avec un objet en param*/
+            //// find vendeur 
+            //var vendeur = await this._context.sellers.FindAsync(id_Seller);
+            //   if (vendeur != null)
+            //{
+            //    Product newProduct =  new Product
+            //    {
+            //        Seller = vendeur,
+            //        Price = price,
+            //        Name = name
+            //    };
+            //    await this._context.products.AddAsync(newProduct);
+
+            //    await this._context.SaveChangesAsync();
+
+            //    return Created($"product/{newProduct.Id}", newProduct);
+            //}
+            //   return BadRequest(string.Empty);
+            // add PRoduct

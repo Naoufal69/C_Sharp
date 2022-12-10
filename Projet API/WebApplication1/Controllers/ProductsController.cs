@@ -11,11 +11,18 @@ namespace WebApplication1.Controllers{
     {
         private readonly ApplicationDbContext _context;
 
+        /* The constructor of the class. It is used to initialize the class. */
         public ProductsController(ApplicationDbContext dbContext)
         {
             this._context = dbContext;
         }
 
+        /// <summary>
+        /// This function is used to get all the products from the database
+        /// </summary>
+        /// <returns>
+        /// A list of products.
+        /// </returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
@@ -26,6 +33,13 @@ namespace WebApplication1.Controllers{
             return await _context.products.ToListAsync();
         }
 
+        /// <summary>
+        /// It returns a list of products that have the same id as the one passed in the url
+        /// </summary>
+        /// <param name="id">int</param>
+        /// <returns>
+        /// A list of products
+        /// </returns>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<IEnumerable<Product>>> GetById(int id)
         {
@@ -46,6 +60,13 @@ namespace WebApplication1.Controllers{
             return tmp_Products;
         }
 
+        /// <summary>
+        /// It deletes a product from the database
+        /// </summary>
+        /// <param name="id">the id of the product to delete</param>
+        /// <returns>
+        /// The product is being deleted from the database.
+        /// </returns>
         [HttpDelete("id")]
         public async Task<ActionResult<String>> DeleteProduct(int id)
         {
@@ -64,10 +85,17 @@ namespace WebApplication1.Controllers{
             {
                 return StatusCode(500);
             }
-            return Ok("Produit supprimé");
+            return Ok("Produit supprimï¿½");
         }
 
 
+        /// <summary>
+        /// It returns a list of products that have the same name as the one passed in the URL
+        /// </summary>
+        /// <param name="name">The name of the product you want to get.</param>
+        /// <returns>
+        /// A list of products with the name specified in the URL
+        /// </returns>
         [HttpGet("{name}")]
         public async Task<ActionResult<IEnumerable<Product>>> GetByName(string name)
         {
@@ -88,6 +116,15 @@ namespace WebApplication1.Controllers{
             return tmp_Products;
         }
 
+        /// <summary>
+        /// This function is used to update a product in the database.
+        /// </summary>
+        /// <param name="id">the id of the product to update</param>
+        /// <param name="Newname">The new name of the product</param>
+        /// <param name="price">double</param>
+        /// <returns>
+        /// The method returns a string.
+        /// </returns>
         [HttpPut]
         public async Task<ActionResult<String>> UpdateProduct(int id,string Newname,double price)
         {
@@ -114,36 +151,23 @@ namespace WebApplication1.Controllers{
             {
                 return StatusCode(500);
             }
-            return Ok($"Le produit {product.Name} a été mis à jours");
+            return Ok($"Le produit {product.Name} a ï¿½tï¿½ mis ï¿½ jours");
         }
 
+        /// <summary>
+        /// It adds a product to the database, but only if the seller exists
+        /// </summary>
+        /// <param name="id_Seller">the id of the seller</param>
+        /// <param name="price">double</param>
+        /// <param name="name">the name of the product</param>
+        /// <returns>
+        /// The method returns a string.
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult<String>> AddProduct(int id_Seller,double price,string name)
         {
 
             bool found = false;
-
-            //// find vendeur 
-            //var vendeur = await this._context.sellers.FindAsync(id_Seller);
-            //   if (vendeur != null)
-            //{
-            //    Product newProduct =  new Product
-            //    {
-            //        Seller = vendeur,
-            //        Price = price,
-            //        Name = name
-            //    };
-            //    await this._context.products.AddAsync(newProduct);
-
-            //    await this._context.SaveChangesAsync();
-
-            //    return Created($"product/{newProduct.Id}", newProduct);
-            //}
-            //   return BadRequest(string.Empty);
-            // add PRoduct
-
-
-
             foreach (Seller seller in _context.sellers)
             {
                 if (seller.Id_Seller == id_Seller)
@@ -163,7 +187,7 @@ namespace WebApplication1.Controllers{
             }
 
             if (found)
-                return Ok("Ressource crée");
+                return Ok("Ressource crï¿½e");
             else 
                 return NotFound("Vendeur inconnu");
         }
